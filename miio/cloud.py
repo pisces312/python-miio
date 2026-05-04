@@ -20,7 +20,7 @@ from miio.exceptions import CloudException
 _LOGGER = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
-    from micloud import MiCloud  # noqa: F401
+    from .micloud import MiCloud  # noqa: F401
 
 AVAILABLE_LOCALES = {
     "all": "All",
@@ -101,11 +101,11 @@ class CloudInterface:
             return
 
         try:
-            from micloud import MiCloud  # noqa: F811
-            from micloud.micloudexception import MiCloudAccessDenied
+            from .micloud import MiCloud
+            from .micloudexception import MiCloudAccessDenied
         except ImportError:
             raise CloudException(
-                "You need to install 'micloud' package to use cloud interface"
+                "micloud module not found"
             )
 
         self._micloud: MiCloud = MiCloud(username=self.username, password=self.password)
@@ -163,11 +163,7 @@ class CloudInterface:
 @click.pass_context
 def cloud(ctx: click.Context, username, password):
     """Cloud commands."""
-    try:
-        import micloud  # noqa: F401
-    except ImportError:
-        _LOGGER.error("micloud is not installed, no cloud access available")
-        raise CloudException("install micloud for cloud access")
+    pass
 
     ctx.obj = CloudInterface(username=username, password=password)
     if ctx.invoked_subcommand is None:

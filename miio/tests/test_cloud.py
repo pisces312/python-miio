@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 
 import pytest
-from micloud.micloudexception import MiCloudAccessDenied
+from miio.micloudexception import MiCloudAccessDenied
 
 from miio import CloudException, CloudInterface
 

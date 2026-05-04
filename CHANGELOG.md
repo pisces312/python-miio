@@ -1,5 +1,20 @@
 # Change Log
 
+## Unreleased
+
+### Changed
+
+- Integrated micloud source code into the project, removing external `micloud` package dependency
+- Added `miio/micloud.py`, `miio/miutils.py`, `miio/micloudexception.py`, `miio/miotspec.py` as internal modules
+- Replaced `netifaces` with `netifaces-plus` (pre-built Windows wheels) for the `updater` extra
+- Added CAPTCHA and 2FA (two-factor authentication) handling to cloud login flow
+- Added browser-based login script (`browser_login.py`) for environments where terminal-based login fails
+
+### Fixed
+
+- Cloud login failing with "Access denied" when 2FA is required (code 100003)
+- Cloud login failing when CAPTCHA is required (code 87001)
+
 ## [0.6.0.dev0](https://github.com/rytilahti/python-miio/tree/0.6.0.dev0) (2024-03-13)
 
 This is a pre-release for 0.6.0 to make the current state of the library available via PyPI for testing and development, and is not yet ready for end users.

@@ -57,7 +57,7 @@ The `miiocli` command allows controlling supported devices from the
 command line, given that you know their IP addresses and tokens.
 
 The simplest way to acquire the tokens is by using the `miiocli cloud` command,
-which fetches them for you from your cloud account using [micloud](https://github.com/Squachen/micloud/):
+which fetches them for you from your cloud account:
 
     miiocli cloud
     Username: example@example.com
@@ -69,6 +69,14 @@ which fetches them for you from your cloud account using [micloud](https://githu
         IP: 192.168.xx.xx (mac: ab:cd:ef:12:34:56)
         DID: 123456789
         Locale: cn
+
+**Note:** Xiaomi cloud login may require CAPTCHA or two-factor authentication (2FA).
+If `miiocli cloud` fails with "Access denied", use the browser-based login script instead:
+
+    python browser_login.py
+
+This script generates a JavaScript snippet for you to run in your browser's DevTools Console,
+leveraging your existing browser session to bypass CAPTCHA and 2FA requirements.
 
 Alternatively, [see the docs](https://python-miio.readthedocs.io/en/latest/discovery.html#obtaining-tokens)
 for other ways to obtain them.
