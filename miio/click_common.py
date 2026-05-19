@@ -252,12 +252,13 @@ class DeviceGroup(click.MultiCommand):
             result_callback = self.device_pass(result_callback)
 
         super().__init__(
-            name or device_class.__name__.lower(),
-            invoke_without_command,
-            no_args_is_help,
-            subcommand_metavar,
-            chain,
-            result_callback,
+            name=name or device_class.__name__.lower(),
+            commands=self.commands,
+            invoke_without_command=invoke_without_command,
+            no_args_is_help=no_args_is_help,
+            subcommand_metavar=subcommand_metavar,
+            chain=chain,
+            result_callback=result_callback,
             **attrs,
         )
 
